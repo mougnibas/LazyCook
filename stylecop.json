@@ -1,0 +1,31 @@
+﻿// Copyright (c) 2019-2020 Yoann MOUGNIBAS
+//
+// This file is part of LazyCook.
+//
+// LazyCook is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// LazyCook is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with LazyCook.  If not, see <https://www.gnu.org/licenses/>.
+
+{
+  //
+  // Reference :
+  // https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/Configuration.md
+  //
+
+  "$schema": "https://raw.githubusercontentcom/DotNetAnalyzers/StyleCopAnalyzers/master/StyleCop.Analyzers/StyleCop.Analyzers/Settings/stylecop.schema.json",
+  "settings": {
+    "documentationRules": {
+      "copyrightText": "Copyright (c) 2019-2020 Yoann MOUGNIBAS\n\nThis file is part of LazyCook.\n\nLazyCook is free software: you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation, either version 3 of the License, or\n(at your option) any later version.\n\nLazyCook is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with LazyCook.  If not, see <https://www.gnu.org/licenses/>.",
+      "xmlHeader": false
+    }
+  }
+}

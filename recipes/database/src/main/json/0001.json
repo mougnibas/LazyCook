@@ -1,0 +1,37 @@
+{
+   "Name": "Velouté de patate douce et lentilles corail",
+   "HumanTime": 20,
+   "MachineTime": 27,
+   "Steps": [
+     {
+       "Instruction": "Eplucher et couper la patate douce en morceau. Mettre de côté.",
+       "Foods": [ { "Name": "Patate douce", "Mass": 400 } ]
+     },
+     {
+       "Instruction": "Placer la lame 'Multi Blade'. Eplucher l'oignon, le couper en 4 et le mettre dans le bol. Fermer le bouchon. Pulse 10 secondes. Racler la parroi.",
+       "Foods": [ { "Name": "Oignon", "Mass": 200 } ]
+     },
+     {
+       "Instruction": "Mettre à porté de main le reste des ingrédients.",
+       "Foods": [
+         { "Name": "Lentille corail", "Mass": 100 },
+         { "Name": "Curry en poudre", "Mass": 5 },
+         { "Name": "Purée de tomate", "Mass": 25 },
+         { "Name": "Lait de coco", "Mass": 150 },
+         { "Name": "Eau", "Mass": 500 }
+       ]
+     },
+     {
+       "Instruction": "Remplacer la lame 'Multi Blade' par le mélangeur 'Stir Assist'. Verser l'huile d'olive sur les oignons émincés. Ouvrir le bouchon. Température : 110°C, Durée : 2 minutes, Vitesse : Intermitante.",
+       "Foods": [ { "Name": "Huile d'olive", "Mass": 10 } ]
+     },
+     {
+       "Instruction": "Remplacer le mélangeur 'Stir Assist' par la lame 'Multi Blade'. Ajouter tous les ingrédients mis de côté. Fermer le bouchon. Température : 100°C, Durée : 30 minutes, Vitesse : Intermitante.",
+       "Foods": []
+     },
+     {
+       "Instruction": "Température : 0°C, Durée : 2 minutes, Vitesse : Maximale.",
+       "Foods": []
+     }
+   ]
+ }
