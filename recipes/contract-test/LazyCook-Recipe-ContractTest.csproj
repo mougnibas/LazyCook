@@ -3,7 +3,7 @@
   <!-- Base properties -->
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>Mougnibas.LazyCook.Recipes.ContactTest</RootNamespace>
+    <RootNamespace>Mougnibas.LazyCook.Recipes.Contact.Test</RootNamespace>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 

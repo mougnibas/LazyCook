@@ -1,0 +1,12 @@
+@inherits LayoutComponentBase
+
+<p id="recipe-step-instruction">@Step.Instruction</p>
+
+@code
+{
+    /// <summary>
+    /// Gets or sets the recipe step (from parameter).
+    /// </summary>
+    [Parameter]
+    public RecipeStepDTO Step { get; set; }
+}

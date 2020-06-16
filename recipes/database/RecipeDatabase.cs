@@ -23,17 +23,18 @@ namespace Mougnibas.LazyCook.Recipes.Database
     using System.IO;
     using System.Reflection;
     using System.Text.Json;
-    using Mougnibas.LazyCook.Recipes.Contract;
+    using Mougnibas.LazyCook.Recipes.Contract.DTO;
+    using Mougnibas.LazyCook.Recipes.Contract.Service;
 
     /// <summary>
     /// A database of recipes.
     /// </summary>
-    public class RecipeDatabase
+    public class RecipeDatabase : IRecipeService
     {
         /// <summary>
         /// The list of recipes.
         /// </summary>
-        private readonly Dictionary<string, Recipe> recipes;
+        private readonly Dictionary<string, RecipeDTO> recipes;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RecipeDatabase"/> class.
@@ -41,7 +42,7 @@ namespace Mougnibas.LazyCook.Recipes.Database
         public RecipeDatabase()
         {
             // Initialize the database.
-            this.recipes = new Dictionary<string, Recipe>();
+            this.recipes = new Dictionary<string, RecipeDTO>();
 
             // Deserialize JSON recipe from assembly.
             var assembly = Assembly.GetExecutingAssembly();
@@ -56,7 +57,7 @@ namespace Mougnibas.LazyCook.Recipes.Database
                     {
                         // Deserialize the recipe.
                         var jsonString = reader.ReadToEnd();
-                        var recipe = JsonSerializer.Deserialize<Recipe>(jsonString);
+                        var recipe = JsonSerializer.Deserialize<RecipeDTO>(jsonString);
 
                         // Add the recipe to the list of recipes.
                         this.recipes.Add(recipe.Name, recipe);
@@ -71,9 +72,9 @@ namespace Mougnibas.LazyCook.Recipes.Database
         /// <returns>
         /// Return all recipes.
         /// </returns>
-        public Recipe[] Get()
+        public RecipeDTO[] GetAll()
         {
-            return new List<Recipe>(this.recipes.Values).ToArray();
+            return new List<RecipeDTO>(this.recipes.Values).ToArray();
         }
 
         /// <summary>
@@ -81,7 +82,7 @@ namespace Mougnibas.LazyCook.Recipes.Database
         /// </summary>
         /// <param name="name">The name of the recipe.</param>
         /// <returns>A recipe, or null if not found.</returns>
-        public Recipe Get(string name)
+        public RecipeDTO GetByName(string name)
         {
             return this.recipes.ContainsKey(name) ? this.recipes[name] : null;
         }

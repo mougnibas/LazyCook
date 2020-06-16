@@ -1,0 +1,113 @@
+@inherits LayoutComponentBase
+
+<!-- Previous recipe (if any) button -->
+@if (PreviousRecipeName != null)
+{
+    <button @onclick="OnPreviousRecipeEvent">Recette précédente</button>
+}
+
+<!-- Next recipe (if any) button -->
+@if (NextRecipeName != null)
+{
+    <button @onclick="OnNextRecipeEvent">Recette suivante</button>
+}
+
+<!-- Actual recipe component -->
+<RecipeComponent NameFromParameter="@ActualRecipeName" />
+
+@code
+{
+    /// <sumary>
+    /// Previous recipe name (null if it's the first recipe of the list).
+    /// </sumary>
+    private string PreviousRecipeName { get; set; } = null;
+
+    /// <sumary>
+    /// Actual recipe name.
+    /// </sumary>
+    [Parameter]
+    public string ActualRecipeName { get; set; }
+
+    /// <sumary>
+    /// Next recipe name (null if it's the last recipe of the list).
+    /// </sumary>
+    private string NextRecipeName { get; set; } = null;
+
+    /// <sumary>
+    /// Initialize the component.
+    /// </sumary>
+    protected override void OnInitialized()
+    {
+        // Set the actual recipe name
+        // If the recipe name is not given, use the first recipe of the list
+        if (ActualRecipeName == null)
+        {
+            this.ActualRecipeName = RecipeDatabaseFactory.Get().Make().GetAll()[0].Name;
+        }
+
+        // Compute previous and next recipe name
+        ComputePreviousAndNextRecipeName();
+    }
+
+    /// <sumary>
+    /// Compute the previous and next recipe name.
+    /// </sumary>
+    private void ComputePreviousAndNextRecipeName()
+    {
+        // Get all recipes
+        var database = RecipeDatabaseFactory.Get().Make();
+        var recipeList = new List<RecipeDTO>(database.GetAll());
+
+        // Get the actual recipe
+        var actualRecipe = database.GetByName(this.ActualRecipeName);
+
+        // Assume some indexes
+        int actualRecipeIndex = recipeList.IndexOf(actualRecipe);
+        int previousRecipeIndex = actualRecipeIndex - 1;
+        int nextRecipeIndex     = actualRecipeIndex + 1;
+
+        // Set the previous recipe name
+        if (previousRecipeIndex < 0)
+        {
+            this.PreviousRecipeName = null;
+        }
+        else
+        {
+            this.PreviousRecipeName = recipeList[previousRecipeIndex].Name;
+        }
+
+        // Set the next recipe name
+        if (nextRecipeIndex >= recipeList.Count)
+        {
+            this.NextRecipeName = null;
+        }
+        else
+        {
+            this.NextRecipeName = recipeList[nextRecipeIndex].Name;
+        }
+    }
+
+    /// <sumary>
+    /// Show the previous recipe (if any).
+    /// </sumary>
+    private void OnPreviousRecipeEvent()
+    {
+        // Set the previous, actual and next recipe name
+        this.ActualRecipeName = this.PreviousRecipeName;
+        
+        // Compute previous and next recipe name
+        ComputePreviousAndNextRecipeName();
+    }
+
+    /// <sumary>
+    /// Show the next recipe (if any).
+    /// </sumary>
+    private void OnNextRecipeEvent()
+    {
+        // Set the previous, actual and next recipe name
+        this.ActualRecipeName = this.NextRecipeName;
+        
+        // Compute previous and next recipe name
+        ComputePreviousAndNextRecipeName();
+    }
+}

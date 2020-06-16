@@ -1,0 +1,25 @@
+{
+   "Name": "B",
+   "HumanTime": 20,
+   "MachineTime": 27,
+   "Steps": [
+     {
+       "Instruction": "B1",
+       "Foods": [ { "Name": "Patate douce", "Mass": 400 } ]
+     },
+     {
+       "Instruction": "B2",
+       "Foods": [ { "Name": "Oignon", "Mass": 200 } ]
+     },
+     {
+       "Instruction": "B3.",
+       "Foods": [
+         { "Name": "Lentille corail", "Mass": 100 },
+         { "Name": "Curry en poudre", "Mass": 5 },
+         { "Name": "Purée de tomate", "Mass": 25 },
+         { "Name": "Lait de coco", "Mass": 150 },
+         { "Name": "Eau", "Mass": 500 }
+       ]
+     }
+   ]
+ }

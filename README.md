@@ -29,6 +29,10 @@ The aim to this project is to make the use of a "KitchenAid© Cook Processor" ea
 
 If Visual Studio 2019 is used, select `Build only` hint source on "Error list" tab.
 
+Gecko driver (for selenium webdriver) required.
+Add it to your PATH.
+https://www.selenium.dev/documentation/en/getting_started_with_webdriver/third_party_drivers_and_plugins/
+
 ## Build instructions
 
 ```
@@ -42,6 +46,15 @@ dotnet build
 dotnet clean
 dotnet test
 ```
+
+## Run instructions
+
+```
+dotnet clean
+dotnet run --project webassembly
+```
+
+Then navigate to `http://localhost:5000/`
 
 ## Misc
 

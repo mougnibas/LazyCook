@@ -21,6 +21,8 @@ bin/
 
 # Visual Studio stuff
 .vs/
+*csproj.user
+*launchSettings.json
 
 # Code Coverage stuff
 CoverageResults/

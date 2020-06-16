@@ -1,0 +1,62 @@
+@inherits LayoutComponentBase
+
+<div id="recipe">
+
+    <div id="recipe-header">
+        <p id="recipe-name">@Recipe.Name</p>
+        <p>Préparation : <span id="recipe-humantime">@Recipe.HumanTime</span> minute(s)</p>
+        <p>Dans le robot : <span id="recipe-machinetime">@Recipe.MachineTime</span> minute(s)</p>
+    </div>
+
+    <div id="recipe-foods">
+        <p>Ingrédients :</p>
+        <ul>
+@foreach (var food in this.Foods)
+{
+            <li>@food.Name (@food.Mass g)</li>
+}
+        </ul>
+    </div>
+
+    <StepsComponent Steps=@Recipe.Steps />
+
+</div>
+
+@code
+{
+    /// <summary>
+    /// Gets or sets the recipe name (from parameter).
+    /// </summary>
+    [Parameter]
+    public string NameFromParameter { get; set; }
+
+    /// <summary>
+    /// The recipe.
+    /// </summary>
+    private RecipeDTO Recipe;
+
+    /// <summary>
+    /// Foods of the recipe.
+    /// </summary>
+    private FoodDTO[] Foods;
+
+    /// <summary>
+    /// From the recipe name (from parameter), load the recipe data.
+    /// </summary>
+    protected override void OnParametersSet()
+    {
+        // Load the recipe
+        this.Recipe = RecipeDatabaseFactory.Get().Make().GetByName(NameFromParameter);
+
+        // Compute food list from the recipe
+        var foodList = new List<FoodDTO>();
+        foreach (var step in this.Recipe.Steps)
+        {
+            foreach (var food in step.Foods)
+            {
+                foodList.Add(food);
+            }
+        }
+        this.Foods = foodList.ToArray();
+    }
+}

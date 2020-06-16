@@ -3,23 +3,23 @@
   <!-- Base properties -->
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>Mougnibas.LazyCook.Recipes.Database.Test</RootNamespace>
+    <RootNamespace>Mougnibas.LazyCook.WebAssembly.Test</RootNamespace>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <!-- Test related properties -->
   <PropertyGroup>
     <CollectCoverage>true</CollectCoverage>
-    <CoverletOutput>../../CoverageResults/</CoverletOutput>
-    <MergeWith>../../CoverageResults/coverage.json</MergeWith>
+    <CoverletOutput>../CoverageResults/</CoverletOutput>
+    <MergeWith>../CoverageResults/coverage.json</MergeWith>
   </PropertyGroup>
 
   <!-- Assembly metadata properties -->
   <PropertyGroup>
     <Company>N.A.</Company>
     <Copyright>2019-2020 Yoann MOUGNIBAS</Copyright>
-    <Description>Database tests of recipe sub-project, from LazyCook project.</Description>
-    <Product>LazyCook (recipe database test module)</Product>
+    <Description>WebAssembly tests, from LazyCook project.</Description>
+    <Product>LazyCook (webassembly test module)</Product>
     <AssemblyVersion>3.0.0.0</AssemblyVersion>
     <Version>3.0.0</Version>
   </PropertyGroup>
@@ -31,7 +31,7 @@
 
   <!-- Private dependency -->
   <ItemGroup>
-    <ProjectReference Include="..\database\LazyCook-Recipe-Database.csproj" />
+    <ProjectReference Include="..\webassembly\LazyCook-WebAssembly.csproj" />
   </ItemGroup>
 
   <!-- FxCop Analyzer -->
@@ -49,7 +49,7 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <None Remove="stylecop.json" />
-    <AdditionalFiles Include="../../stylecop.json" />
+    <AdditionalFiles Include="../stylecop.json" />
   </ItemGroup>
 
   <!-- Code coverage -->
@@ -66,6 +66,25 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.2.0" />
     <PackageReference Include="MSTest.TestAdapter" Version="2.0.0" />
     <PackageReference Include="MSTest.TestFramework" Version="2.0.0" />
+  </ItemGroup>
+
+  <!-- Selenium -->
+  <ItemGroup>
+    <PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
+    <PackageReference Include="Selenium.Support" Version="3.141.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Properties\strings.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>strings.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\strings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>strings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

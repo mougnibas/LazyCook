@@ -58,8 +58,8 @@
 
   <!-- Include JSON files to the assembly -->
   <ItemGroup>
-    <Content Remove="src/main/json/*.json" />
-    <EmbeddedResource Include="src/main/json/*.json" />
+    <Content Remove="json/*.json" />
+    <EmbeddedResource Include="json/*.json" />
   </ItemGroup>
 
 </Project>
