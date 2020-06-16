@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LazyCook-Recipe-DatabaseTes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LazyCook-Recipe-ContractTest", "recipes\contract-test\LazyCook-Recipe-ContractTest.csproj", "{E4A0F55A-EBE9-4ECF-A474-D1682123B7C7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LazyCook-WebAssembly", "webassembly\LazyCook-WebAssembly.csproj", "{72D0BA53-DE36-4905-B617-922284D78C58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LazyCook-WebAssemblyTest", "webassembly-test\LazyCook-WebAssemblyTest.csproj", "{157DB21F-F796-43C2-8E6E-B95DF76EBCEA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -74,6 +78,30 @@ Global
 		{E4A0F55A-EBE9-4ECF-A474-D1682123B7C7}.Release|x64.Build.0 = Release|Any CPU
 		{E4A0F55A-EBE9-4ECF-A474-D1682123B7C7}.Release|x86.ActiveCfg = Release|Any CPU
 		{E4A0F55A-EBE9-4ECF-A474-D1682123B7C7}.Release|x86.Build.0 = Release|Any CPU
+		{72D0BA53-DE36-4905-B617-922284D78C58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72D0BA53-DE36-4905-B617-922284D78C58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72D0BA53-DE36-4905-B617-922284D78C58}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{72D0BA53-DE36-4905-B617-922284D78C58}.Debug|x64.Build.0 = Debug|Any CPU
+		{72D0BA53-DE36-4905-B617-922284D78C58}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{72D0BA53-DE36-4905-B617-922284D78C58}.Debug|x86.Build.0 = Debug|Any CPU
+		{72D0BA53-DE36-4905-B617-922284D78C58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72D0BA53-DE36-4905-B617-922284D78C58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72D0BA53-DE36-4905-B617-922284D78C58}.Release|x64.ActiveCfg = Release|Any CPU
+		{72D0BA53-DE36-4905-B617-922284D78C58}.Release|x64.Build.0 = Release|Any CPU
+		{72D0BA53-DE36-4905-B617-922284D78C58}.Release|x86.ActiveCfg = Release|Any CPU
+		{72D0BA53-DE36-4905-B617-922284D78C58}.Release|x86.Build.0 = Release|Any CPU
+		{157DB21F-F796-43C2-8E6E-B95DF76EBCEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{157DB21F-F796-43C2-8E6E-B95DF76EBCEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{157DB21F-F796-43C2-8E6E-B95DF76EBCEA}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{157DB21F-F796-43C2-8E6E-B95DF76EBCEA}.Debug|x64.Build.0 = Debug|Any CPU
+		{157DB21F-F796-43C2-8E6E-B95DF76EBCEA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{157DB21F-F796-43C2-8E6E-B95DF76EBCEA}.Debug|x86.Build.0 = Debug|Any CPU
+		{157DB21F-F796-43C2-8E6E-B95DF76EBCEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{157DB21F-F796-43C2-8E6E-B95DF76EBCEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{157DB21F-F796-43C2-8E6E-B95DF76EBCEA}.Release|x64.ActiveCfg = Release|Any CPU
+		{157DB21F-F796-43C2-8E6E-B95DF76EBCEA}.Release|x64.Build.0 = Release|Any CPU
+		{157DB21F-F796-43C2-8E6E-B95DF76EBCEA}.Release|x86.ActiveCfg = Release|Any CPU
+		{157DB21F-F796-43C2-8E6E-B95DF76EBCEA}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{7DB3DE05-CADB-4F07-AF49-2567F593E249} = {22F2D74B-2760-429F-B2A2-657943383DB8}

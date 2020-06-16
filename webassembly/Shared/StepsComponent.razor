@@ -1,0 +1,130 @@
+@inherits LayoutComponentBase
+
+<div id="recipe-steps">
+    
+    <!-- Actual recipe step component -->
+    <StepComponent Step=@Steps[@CurrentStepIndex] />
+
+<!-- Previous recipe step index (if any) button -->
+@if (PreviousStepIndex != -1)
+{
+    <button id="recipe-step-previous-button" @onclick="OnPreviousStepEvent">Etape précédente</button>
+}
+
+<!-- Next recipe step index (if any) button -->
+@if (NextStepIndex != -1)
+{
+    <button id="recipe-step-next-button" @onclick="OnNextStepEvent">Etape suivante</button>
+}
+
+</div>
+
+@code
+{
+    /// <summary>
+    /// Gets or sets the recipe steps (from parameter).
+    /// </summary>
+    [Parameter]
+    public RecipeStepDTO[] Steps { get; set; }
+
+    /// <summary>
+    /// Gets or sets the current recipe step (from parameter) (default is 0).
+    /// </summary>
+    public int CurrentStepIndex { get; set;} = 0;
+
+    /// <sumary>
+    /// Previous recipe step index (null if it's the first recipe step of the list).
+    /// </sumary>
+    private int PreviousStepIndex { get; set; } = -1;
+
+    /// <sumary>
+    /// Next recipe step index (null if it's the last recipe step of the list).
+    /// </sumary>
+    private int NextStepIndex { get; set; } = -1;
+
+    /// <sumary>
+    /// Initialize the indexes.
+    /// </sumary>
+    protected override void OnInitialized()
+    {
+        // Set default indexes
+        this.CurrentStepIndex = 0;
+        this.PreviousStepIndex = -1;
+        this.NextStepIndex = -1;
+
+        // Compute previous and next recipe step
+        ComputePreviousAndNextStep();
+    }
+
+    /// <sumary>
+    /// Updates the indexes.
+    /// </sumary>
+    protected override void OnParametersSet()
+    {
+        // Set default indexes
+        this.CurrentStepIndex = 0;
+        this.PreviousStepIndex = -1;
+        this.NextStepIndex = -1;
+
+        // Compute previous and next recipe step
+        ComputePreviousAndNextStep();
+    }
+
+    /// <sumary>
+    /// Compute the previous and next step.
+    /// </sumary>
+    private void ComputePreviousAndNextStep()
+    {
+        // Put the steps in a list
+        var stepList = new List<RecipeStepDTO>(this.Steps);
+
+        // Assume some indexes
+        int actualIndex = this.CurrentStepIndex;
+        int previousIndex = actualIndex - 1;
+        int nextIndex     = actualIndex + 1;
+
+        // Set the previous step index
+        if (previousIndex < 0)
+        {
+            this.PreviousStepIndex = -1;
+        }
+        else
+        {
+            this.PreviousStepIndex = previousIndex;
+        }
+
+        // Set the next step index
+        if (nextIndex >= stepList.Count)
+        {
+            this.NextStepIndex = -1;
+        }
+        else
+        {
+            this.NextStepIndex = nextIndex;
+        }
+    }
+
+    /// <sumary>
+    /// Show the previous step (if any).
+    /// </sumary>
+    private void OnPreviousStepEvent()
+    {
+        // Set the previous step
+        this.CurrentStepIndex = this.PreviousStepIndex;
+        
+        // Compute previous and next step
+        ComputePreviousAndNextStep();
+    }
+
+    /// <sumary>
+    /// Show the next step (if any).
+    /// </sumary>
+    private void OnNextStepEvent()
+    {
+        // Set the next step
+        this.CurrentStepIndex = this.NextStepIndex;
+        
+        // Compute previous and next step
+        ComputePreviousAndNextStep();
+    }
+}

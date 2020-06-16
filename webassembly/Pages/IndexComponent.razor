@@ -1,0 +1,14 @@
+﻿@page "/"
+@page "/{RecipeName}"
+
+<!-- All recipes component -->
+<RecipesComponent ActualRecipeName="@RecipeName" />
+
+@code
+{
+    /// <sumary>
+    /// Recipe name (if any).
+    /// </sumary>
+    [Parameter]
+    public string RecipeName { get; set; }
+}
