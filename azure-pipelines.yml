@@ -19,8 +19,9 @@
 #trigger:
 #- master
 
+# Use this Microsoft based agent (ubuntu LTS release)
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'ubuntu-18.04'
 
 steps:
 - script: echo Hello, world!
