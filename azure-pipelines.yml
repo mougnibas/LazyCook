@@ -28,7 +28,7 @@ steps:
 
 # Be friendly here
 - bash: |
-    echo Hello there.
-    echo I hope you'll have a good day.
+    echo "Hello there."
+    echo "I hope you'll have a good day."
   name: 'friendly_step'
   displayName: 'This is a friendly step'
