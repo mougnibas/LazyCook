@@ -19,26 +19,30 @@
 #trigger:
 #- master
 
+# ----------------------------------------------------
 # Use this Microsoft based agent (ubuntu LTS release)
+# ----------------------------------------------------
 pool:
   vmImage: 'ubuntu-18.04'
 
-# Pipeline's steps
-steps:
+# ------------------
+# Pipeline's stages
+# ------------------
+stages:
 
-# A step to be friendly
-- bash: |
-    echo "Hello there."
-    echo "I hope you'll have a good day."
-  name: 'friendly_step'
-  displayName: 'This is a friendly step'
+  # Build stage
+  - stage : build_stage
+    jobs:
+      - job: build_job
+        steps:
+        # A step to build the project sources
+          - bash: 'dotnet build'
+            name: 'build_step'
 
-# A step to build the project sources
-- bash: 'dotnet build'
-  name: 'build'
-  displayName: 'Run a "dotnet build" command'
-
-# A step to test the project
-- bash: 'dotnet test'
-  name: test
-  displayName : 'Run "dotnet test" command'
+  # Test stage
+  - stage: test_stage
+    jobs:
+      - job: test_job
+        steps:
+          - bash: 'dotnet test'
+            name: 'test_step'
