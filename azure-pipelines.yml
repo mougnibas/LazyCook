@@ -63,5 +63,5 @@ stages:
           - task: PublishTestResults@2
             inputs:
               testResultsFormat: 'VSTest'
-              testResultsFiles: '**/TEST-*.trx' 
+              testResultsFiles: '**/*.trx' 
             name: 'publish_test_results_step'
