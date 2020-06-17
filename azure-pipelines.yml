@@ -31,30 +31,30 @@ pool:
 stages:
 
   # Build stage
-  # Use ".NET Core CLI" task
   - stage : build_stage
     jobs:
       - job: build_job
         steps:
+          # Use ".NET Core CLI" task
           - task: DotNetCoreCLI@2
+            name: 'build_step'
             inputs:
               command: 'build'
               arguments: '--configuration Release'
-            name: 'build_step'
 
   # Test stage
-  # Use ".NET Core CLI" task
-  # Test results will be automatically published (discovered as ".trx" file format)
-  # Code coverage results need to be published using dedicated "Publish Code Coverage Results" task
   - stage: test_stage
     jobs:
       - job: test_job
         steps:
+          # Use ".NET Core CLI" task to invoke "test" command
+          # Test results will be automatically published (discovered as ".trx" file format)
           - task: DotNetCoreCLI@2
+            name: 'test_step'
             inputs:
               command: 'test'
               arguments: '--configuration Release --logger trx'
-            name: 'test_step'
+          # Code coverage results need to be published using dedicated "Publish Code Coverage Results" task
           - task: PublishCodeCoverageResults@1
             inputs:
               codeCoverageTool: 'cobertura'
