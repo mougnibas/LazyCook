@@ -31,11 +31,14 @@ pool:
 stages:
 
   # Build stage
+  # Use ".NET Core CLI" task
   - stage : build_stage
     jobs:
       - job: build_job
         steps:
-          - bash: 'dotnet build --configuration Release'
+          - task: DotNetCoreCLI@2
+            inputs:
+              command: 'build'
             name: 'build_step'
 
   # Test stage
