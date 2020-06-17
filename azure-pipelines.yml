@@ -39,6 +39,7 @@ stages:
           - task: DotNetCoreCLI@2
             inputs:
               command: 'build'
+              arguments: '--configuration Release'
             name: 'build_step'
 
   # Test stage
