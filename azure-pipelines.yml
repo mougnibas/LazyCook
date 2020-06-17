@@ -35,7 +35,7 @@ stages:
     jobs:
       - job: build_job
         steps:
-          - bash: 'dotnet build'
+          - bash: 'dotnet build --configuration Release'
             name: 'build_step'
 
   # Test stage
