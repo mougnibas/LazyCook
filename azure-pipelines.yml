@@ -26,9 +26,14 @@ pool:
 # Pipeline's steps
 steps:
 
-# Be friendly here
+# A step to be friendly
 - bash: |
     echo "Hello there."
     echo "I hope you'll have a good day."
   name: 'friendly_step'
   displayName: 'This is a friendly step'
+
+# A step to build the project sources
+- bash: 'dotnet build'
+  name: 'build'
+  displayName: 'Run a dotnet build'
