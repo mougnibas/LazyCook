@@ -102,7 +102,7 @@ namespace Mougnibas.LazyCook.WebAssembly.Test
 
             // Wait for the ASP.NET Kestrel program to publish the web application,
             // or until an error or a timeout occurs.
-            int timeout = 10000;
+            int timeout = 30000;
             var max = DateTime.Now.AddMilliseconds(timeout);
             bool isTimeout = false;
             while (!this.isApplicationStarted && !this.isServerError && !isTimeout)
