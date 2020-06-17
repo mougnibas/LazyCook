@@ -51,7 +51,7 @@ stages:
           - task: DotNetCoreCLI@2
             inputs:
               command: 'test'
-              arguments: '--configuration Release'
+              arguments: '--configuration Release --logger trx'
             name: 'test_step'
 
   # Publish test results stage
@@ -61,7 +61,7 @@ stages:
       - job: publish_test_results_job
         steps:
           - task: PublishTestResults@2
-            #inputs:
-              #testResultsFormat: 'VSTest'
-              #testResultsFiles: '**/TEST-*.trx' 
+            inputs:
+              testResultsFormat: 'VSTest'
+              testResultsFiles: '**/TEST-*.trx' 
             name: 'publish_test_results_step'
