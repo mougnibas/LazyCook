@@ -59,3 +59,4 @@ stages:
             inputs:
               codeCoverageTool: 'cobertura'
               summaryFileLocation: '$(System.DefaultWorkingDirectory)/CoverageResults/coverage.cobertura.xml'
+            name: 'coverage_publish_result_step'
