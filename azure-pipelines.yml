@@ -1,0 +1,62 @@
+# Copyright (c) 2019-2020 Yoann MOUGNIBAS
+#
+# This file is part of LazyCook.
+#
+# LazyCook is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# LazyCook is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with LazyCook.  If not, see <https://www.gnu.org/licenses/>.
+
+# Trigger a build on any branch
+#trigger:
+#- master
+
+# ----------------------------------------------------
+# Use this Microsoft based agent (ubuntu LTS release)
+# ----------------------------------------------------
+pool:
+  vmImage: 'ubuntu-18.04'
+
+# ------------------
+# Pipeline's stages
+# ------------------
+stages:
+
+  # Build stage
+  - stage : build_stage
+    jobs:
+      - job: build_job
+        steps:
+          # Use ".NET Core CLI" task
+          - task: DotNetCoreCLI@2
+            name: 'build_step'
+            inputs:
+              command: 'build'
+              arguments: '--configuration Release'
+
+  # Test stage
+  - stage: test_stage
+    jobs:
+      - job: test_job
+        steps:
+          # Use ".NET Core CLI" task to invoke "test" command
+          # Test results will be automatically published (discovered as ".trx" file format)
+          - task: DotNetCoreCLI@2
+            name: 'test_step'
+            inputs:
+              command: 'test'
+              arguments: '--configuration Release --logger trx'
+          # Code coverage results need to be published using dedicated "Publish Code Coverage Results" task
+          - task: PublishCodeCoverageResults@1
+            inputs:
+              codeCoverageTool: 'cobertura'
+              summaryFileLocation: '$(System.DefaultWorkingDirectory)/CoverageResults/coverage.cobertura.xml'
+            name: 'coverage_publish_result_step'
