@@ -43,9 +43,13 @@ stages:
             name: 'build_step'
 
   # Test stage
+  # Use ".NET Core CLI" task
   - stage: test_stage
     jobs:
       - job: test_job
         steps:
-          - bash: 'dotnet test --configuration Release'
+          - task: DotNetCoreCLI@2
+            inputs:
+              command: 'test'
+              arguments: '--configuration Release'
             name: 'test_step'
