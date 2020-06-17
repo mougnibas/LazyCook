@@ -36,4 +36,9 @@ steps:
 # A step to build the project sources
 - bash: 'dotnet build'
   name: 'build'
-  displayName: 'Run a dotnet build'
+  displayName: 'Run a "dotnet build" command'
+
+# A step to test the project
+- bash: 'dotnet test'
+  name: test
+  displayName : 'Run "dotnet test" command'
