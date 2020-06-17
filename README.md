@@ -22,6 +22,9 @@ The aim to this project is to make the use of a "KitchenAid© Cook Processor" ea
 
 # For developers
 
+* Project repository link : https://github.com/mougnibas/LazyCook
+* Project DevOps link : https://mougnibas.visualstudio.com/LazyCook
+
 ## Requirements (Microsoft provided)
 
 * .NET Core 3.1 SDK (https://dotnet.microsoft.com/download)

@@ -10,6 +10,7 @@
   <!-- Test related properties -->
   <PropertyGroup>
     <CollectCoverage>true</CollectCoverage>
+    <CoverletOutputFormat>json,cobertura</CoverletOutputFormat>
     <CoverletOutput>../CoverageResults/</CoverletOutput>
     <MergeWith>../CoverageResults/coverage.json</MergeWith>
   </PropertyGroup>
