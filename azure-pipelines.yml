@@ -45,6 +45,7 @@ stages:
   # Test stage
   # Use ".NET Core CLI" task
   # Test results will be automatically published (discovered as ".trx" file format)
+  # Code coverage results need to be published using dedicated "Publish Code Coverage Results" task
   - stage: test_stage
     jobs:
       - job: test_job
@@ -54,3 +55,7 @@ stages:
               command: 'test'
               arguments: '--configuration Release --logger trx'
             name: 'test_step'
+          - task: PublishCodeCoverageResults@1
+            inputs:
+              codeCoverageTool: 'cobertura'
+              summaryFileLocation: '$(System.DefaultWorkingDirectory)/CoverageResults/coverage.cobertura.xml'
