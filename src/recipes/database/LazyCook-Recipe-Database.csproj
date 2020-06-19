@@ -30,7 +30,7 @@
 
   <!-- Private dependency -->
   <ItemGroup>
-    <ProjectReference Include="..\contract\LazyCook-Recipe-Contract.csproj" />
+    <ProjectReference Include="../contract/LazyCook-Recipe-Contract.csproj" />
   </ItemGroup>
 
   <!-- Public dependency -->
@@ -53,7 +53,7 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <None Remove="stylecop.json" />
-    <AdditionalFiles Include="../../stylecop.json" />
+    <AdditionalFiles Include="../../../stylecop.json" />
   </ItemGroup>
 
   <!-- Include JSON files to the assembly -->
