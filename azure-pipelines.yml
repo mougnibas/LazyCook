@@ -19,44 +19,49 @@
 #trigger:
 #- master
 
-# ----------------------------------------------------
 # Use this Microsoft based agent (ubuntu LTS release)
-# ----------------------------------------------------
 pool:
-  vmImage: 'ubuntu-18.04'
+  vmImage: 'ubuntu-20.04'
 
-# ------------------
+# Build name
+name: $(TeamProject)_$(BuildDefinitionName)_$(SourceBranchName)_$(Date:yyyyMMdd)$(Rev:.r)
+
+# Build variables
+variables:
+  BuildConfiguration: 'Release'
+
 # Pipeline's stages
-# ------------------
+# Only one actually : Build
 stages:
 
-  # Build stage
-  - stage : build_stage
+  # "Build" stage
+  - stage : Build
     jobs:
-      - job: build_job
+      - job: build
         steps:
-          # Use ".NET Core CLI" task
+          # Use ".NET Core CLI" task to restore
+          # It is recommended that an explicit 'dotnet restore' step be used to restore packages.
           - task: DotNetCoreCLI@2
-            name: 'build_step'
+            name: 'dotnet_restore'
+            inputs:
+              command: 'restore'
+          # Use ".NET Core CLI" task to build
+          - task: DotNetCoreCLI@2
+            name: 'dotnet_build'
             inputs:
               command: 'build'
-              arguments: '--configuration Release'
-
-  # Test stage
-  - stage: test_stage
-    jobs:
-      - job: test_job
-        steps:
+              arguments: '--configuration $(BuildConfiguration)'
           # Use ".NET Core CLI" task to invoke "test" command
           # Test results will be automatically published (discovered as ".trx" file format)
+          # Also collect the code coverage, even if pipeline don't seem to do anything with it.
           - task: DotNetCoreCLI@2
-            name: 'test_step'
+            name: 'dotnet_test'
             inputs:
               command: 'test'
-              arguments: '--configuration Release --logger trx'
-          # Code coverage results need to be published using dedicated "Publish Code Coverage Results" task
+              arguments: '--configuration $(BuildConfiguration) --logger trx --collect "XPlat Code Coverage"'
+          # Cobertura Code Coverage results need to be published using dedicated "Publish Code Coverage Results" task
           - task: PublishCodeCoverageResults@1
             inputs:
               codeCoverageTool: 'cobertura'
               summaryFileLocation: '$(System.DefaultWorkingDirectory)/CoverageResults/coverage.cobertura.xml'
-            name: 'coverage_publish_result_step'
+            name: 'code_coverage_cobertura_publish'
