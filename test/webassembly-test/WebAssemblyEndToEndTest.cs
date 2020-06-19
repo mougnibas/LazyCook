@@ -69,9 +69,10 @@ namespace Mougnibas.LazyCook.WebAssembly.Test
 
             // Find the webassembly directory
             DirectoryInfo currentDir = new DirectoryInfo(Directory.GetCurrentDirectory());
-            DirectoryInfo rootProjectDir = currentDir.Parent.Parent.Parent.Parent;
+            DirectoryInfo rootProjectDir = currentDir.Parent.Parent.Parent.Parent.Parent;
+            DirectoryInfo srcProjectDir = rootProjectDir.GetDirectories("src")[0];
             string webassemblyProjectDir = null;
-            foreach (DirectoryInfo di in rootProjectDir.GetDirectories())
+            foreach (DirectoryInfo di in srcProjectDir.GetDirectories())
             {
                 if (di.Name.Equals("webassembly", StringComparison.Ordinal))
                 {
