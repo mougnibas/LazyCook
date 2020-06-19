@@ -3,7 +3,7 @@
   <!-- Base properties -->
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <RootNamespace>Mougnibas.LazyCook.Recipes.Database</RootNamespace>
+    <RootNamespace>Mougnibas.LazyCook.Recipes.Contract</RootNamespace>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
@@ -11,8 +11,8 @@
   <PropertyGroup>
     <Company>N.A.</Company>
     <Copyright>2019-2020 Yoann MOUGNIBAS</Copyright>
-    <Description>Database of recipe sub-project, from LazyCook project.</Description>
-    <Product>LazyCook (recipe database module)</Product>
+    <Description>Contract of recipe sub-project, from LazyCook project.</Description>
+    <Product>LazyCook (recipe contract module)</Product>
     <AssemblyVersion>3.0.0.0</AssemblyVersion>
     <Version>3.0.0</Version>
   </PropertyGroup>
@@ -20,27 +20,17 @@
   <!-- NuGet metadata properties -->
   <PropertyGroup>
     <PackageVersion>3.0.0-alpha</PackageVersion>
-    <PackageId>LazyCook-Recipe-Database</PackageId>
-    <Title>LazyCook Recipe Database</Title>
+    <PackageId>LazyCook-Recipe-Contract</PackageId>
+    <Title>LazyCook Recipe Contract</Title>
     <Authors>Yoann MOUGNIBAS</Authors>
-    <PackageDescription>Database of recipe sub-project, from LazyCook project.</PackageDescription>
+    <PackageDescription>Contract of recipe sub-project, from LazyCook project.</PackageDescription>
     <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/mougnibas/LazyCook</RepositoryUrl>
   </PropertyGroup>
 
-  <!-- Private dependency -->
-  <ItemGroup>
-    <ProjectReference Include="..\contract\LazyCook-Recipe-Contract.csproj" />
-  </ItemGroup>
-
-  <!-- Public dependency -->
-  <ItemGroup>
-    <PackageReference Include="System.Text.Json" Version="4.6.0" />
-  </ItemGroup>
-
   <!-- FxCop Analyzer -->
   <ItemGroup>
-    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.8">
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.7">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
@@ -53,13 +43,7 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <None Remove="stylecop.json" />
-    <AdditionalFiles Include="../../stylecop.json" />
-  </ItemGroup>
-
-  <!-- Include JSON files to the assembly -->
-  <ItemGroup>
-    <Content Remove="json/*.json" />
-    <EmbeddedResource Include="json/*.json" />
+    <AdditionalFiles Include="../../../stylecop.json" />
   </ItemGroup>
 
 </Project>
