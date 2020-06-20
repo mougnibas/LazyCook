@@ -7,9 +7,13 @@
 	],
 	"extensions": {
 		"recommendations": [
-			"ms-azure-devops.azure-pipelines",
 			"ms-dotnettools.csharp",
-			"vscode-icons-team.vscode-icons"
+			"ms-vscode.js-debug-nightly",
+			"vscode-icons-team.vscode-icons",
+			"ms-azure-devops.azure-pipelines"
 		]
+	},
+	"settings": {
+		"debug.javascript.usePreview": true
 	}
 }
