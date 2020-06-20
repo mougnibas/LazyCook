@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"name": "LazyCook",
+			"path": "."
+		}
+	],
+	"extensions": {
+		"recommendations": [
+			"ms-azure-devops.azure-pipelines",
+			"ms-dotnettools.csharp",
+			"vscode-icons-team.vscode-icons"
+		]
+	}
+}
