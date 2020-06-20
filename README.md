@@ -28,7 +28,7 @@ The aim to this project is to make the use of a "KitchenAid© Cook Processor" ea
 ## Requirements (Microsoft provided)
 
 * .NET Core 3.1 SDK (https://dotnet.microsoft.com/download)
-* Any text editor with UTF-8 and "CR LF" capabilities.
+* Visual Studio Code (or any text editor with UTF-8 and "CR LF" capabilities).
 
 If Visual Studio 2019 is used, select `Build only` hint source on "Error list" tab.
 
