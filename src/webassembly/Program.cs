@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019-2020 Yoann MOUGNIBAS
+// Copyright (c) 2019-2020 Yoann MOUGNIBAS
 //
 // This file is part of LazyCook.
 //
@@ -14,32 +14,32 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with LazyCook.  If not, see <https://www.gnu.org/licenses/>.
-
 namespace Mougnibas.LazyCook.WebAssembly
 {
-    using Microsoft.AspNetCore.Blazor.Hosting;
+    using System;
+    using System.Net.Http;
+    using System.Threading.Tasks;
+    using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+    using Microsoft.Extensions.DependencyInjection;
 
     /// <summary>
-    /// ASP.NET Core entrypoint class.
-    /// It simply serve web assembly static files.
+    /// ASP.NET Core entrypoint program.
     /// </summary>
-    public sealed class Program
+    public static class Program
     {
         /// <summary>
-        /// Entry point method.
+        /// ASP.NET Core entry point method.
         /// </summary>
-        public static void Main()
+        /// <param name="args">Not used.</param>
+        /// <returns>async stuff.</returns>
+        public static async Task Main(string[] args)
         {
-            // ASP.NET Core related stuff.
-            CreateHostBuilder().Build().Run();
-        }
+            var builder = WebAssemblyHostBuilder.CreateDefault(args);
+            builder.RootComponents.Add<App>("app");
 
-        /// <summary>
-        /// ASP.NET Core related stuff.
-        /// </summary>
-        /// <returns>An ASP.NET Core related stuff.</returns>
-        public static IWebAssemblyHostBuilder CreateHostBuilder() =>
-            BlazorWebAssemblyHost.CreateDefaultBuilder()
-                .UseBlazorStartup<Startup>();
+            builder.Services.AddTransient(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+
+            await builder.Build().RunAsync().ConfigureAwait(true);
+        }
     }
 }
