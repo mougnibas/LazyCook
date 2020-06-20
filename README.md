@@ -22,65 +22,49 @@ The aim to this project is to make the use of a "KitchenAid© Cook Processor" ea
 
 # For developers
 
-* Project repository link : https://github.com/mougnibas/LazyCook
-* Project DevOps link : https://mougnibas.visualstudio.com/LazyCook
+## Project links
 
-## Requirements (Microsoft provided)
+* Project repository : https://github.com/mougnibas/LazyCook
+* Project DevOps : https://mougnibas.visualstudio.com/LazyCook
+
+## Sources convention
+
+* "CR LF" line ending
+* UTF-8 (without BOM)
+* Default StyleCop and FxCop rules
+
+## Requirements
 
 * .NET Core 3.1 SDK (https://dotnet.microsoft.com/download)
-* Visual Studio Code (or any text editor with UTF-8 and "CR LF" capabilities).
+* Visual Studio Code (https://code.visualstudio.com/Download)
+* Gecko driver added to PATH (https://www.selenium.dev/documentation/en/getting_started_with_webdriver/third_party_drivers_and_plugins/)
+* Google Chrome (https://www.google.com/chrome/)
 
-If Visual Studio 2019 is used, select `Build only` hint source on "Error list" tab.
+## Project import
 
-Gecko driver (for selenium webdriver) required.
-Add it to your PATH.
-https://www.selenium.dev/documentation/en/getting_started_with_webdriver/third_party_drivers_and_plugins/
+* From Visual Studio Code, open Workspace file `LazyCook.code-workspace`
+* Install recommended extensions
 
-## Build instructions
+## Application lifecycle instructions
 
-```
-dotnet clean
-dotnet build
-```
+### Clean
 
-## Test instructions
+`Terminal / Run Task / clean`
 
-```
-dotnet clean
-dotnet test
-```
+### Build
 
-## Run instructions
+`Terminal / Run Build Task`
 
-```
-dotnet clean
-dotnet run --project webassembly
-```
+### Test
 
-Then navigate to `http://localhost:5000/`
+`Terminal / Run Task / test`
 
-## Misc
+Then wait a couple of minutes.
 
-### Source file encoding and end of line convention
+### Run
 
-* UTF-8 (without BOM)
-* "CR LF" (windows)
+`Run / Run Without Debuging (Ctrl+F5)`
 
-### FxCop (Microsoft provided, enabled by default)
+### Debug
 
-Run `dotnet add package Microsoft.CodeAnalysis.FxCopAnalyzers` on each project.
-
-### StyleCop (Third-party provided, enabled by default)
-
-Run `dotnet add package StyleCop.Analyzers` on each project.
-Add the following lines to `<ItemGroup>...</ItemGroup>` section :
-
-```
-<None Remove="stylecop.json" />
-<AdditionalFiles Include="../../stylecop.json" />
-```
-
-### Code Coverage (Third-party provided, enabled by default)
-
-Run `dotnet add package coverlet.msbuild` on each test project.
-Add the following line to `<ItemGroup>...</ItemGroup>` section : `<CollectCoverage>true</CollectCoverage>`
+`Run / Start Debuging (F5)`

@@ -24,8 +24,9 @@ bin/
 *csproj.user
 *launchSettings.json
 
-# Code Coverage stuff
+# Test and code Coverage stuff
 CoverageResults/
+TestResults/
 
 # Test stuff
 *.trx
