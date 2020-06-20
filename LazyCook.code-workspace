@@ -10,7 +10,8 @@
 			"ms-dotnettools.csharp",
 			"ms-vscode.js-debug-nightly",
 			"vscode-icons-team.vscode-icons",
-			"ms-azure-devops.azure-pipelines"
+			"ms-azure-devops.azure-pipelines",
+			"GitHub.vscode-pull-request-github"
 		]
 	},
 	"settings": {
