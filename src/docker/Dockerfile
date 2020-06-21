@@ -7,7 +7,7 @@ COPY src/ src/
 COPY test/ test/
 COPY stylecop.json ./
 RUN dotnet restore
-RUN dotnet publish --configuration Release --output /app --no-restore --runtime linux-x64
+RUN dotnet publish --configuration Release --output /app --no-restore
 
 # final stage/image
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
