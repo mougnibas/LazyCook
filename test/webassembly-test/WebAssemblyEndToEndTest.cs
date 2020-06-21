@@ -27,7 +27,7 @@ namespace Mougnibas.LazyCook.WebAssembly.Test
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Mougnibas.LazyCook.WebAssembly.Test.Properties;
     using OpenQA.Selenium;
-    using OpenQA.Selenium.Firefox;
+    using OpenQA.Selenium.Chrome;
     using OpenQA.Selenium.Support.UI;
 
     /// <summary>
@@ -63,9 +63,9 @@ namespace Mougnibas.LazyCook.WebAssembly.Test
         public void Init()
         {
             // Create a new selenium web driver for an headless firefox instance
-            FirefoxOptions options = new FirefoxOptions();
+            ChromeOptions options = new ChromeOptions();
             options.AddArgument("--headless");
-            this.driver = new FirefoxDriver(options);
+            this.driver = new ChromeDriver(options);
 
             // Find the webassembly directory
             DirectoryInfo currentDir = new DirectoryInfo(Directory.GetCurrentDirectory());
