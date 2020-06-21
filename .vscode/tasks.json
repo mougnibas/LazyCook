@@ -40,6 +40,29 @@
                 "kind": "test",
                 "isDefault": true
             }
+        },
+        {
+            "label": "publish",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "publish",
+                "--configuration",
+                "Release"
+            ]
+        },
+        {
+            "label": "docker-build",
+            "command": "docker",
+            "type": "process",
+            "args": [
+                "build",
+                "--tag",
+                "deleteme",
+                "--file",
+                "src/docker/Dockerfile",
+                "./"
+            ]
         }
     ]
 }
