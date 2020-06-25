@@ -1,9 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
+
   <!-- Base properties -->
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
-    <RootNamespace>Mougnibas.LazyCook.WebAssembly</RootNamespace>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>Mougnibas.LazyCook.WebAssembly.Server</RootNamespace>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
@@ -11,8 +12,8 @@
   <PropertyGroup>
     <Company>N.A.</Company>
     <Copyright>2019-2020 Yoann MOUGNIBAS</Copyright>
-    <Description>Web Assembly sub-project, from LazyCook project.</Description>
-    <Product>LazyCook (webassembly module)</Product>
+    <Description>Web Assembly server sub-project, from LazyCook project.</Description>
+    <Product>LazyCook (webassembly server module)</Product>
     <AssemblyVersion>3.0.0.0</AssemblyVersion>
     <Version>3.0.0</Version>
   </PropertyGroup>
@@ -20,29 +21,22 @@
   <!-- NuGet metadata properties -->
   <PropertyGroup>
     <PackageVersion>3.0.0-alpha</PackageVersion>
-    <PackageId>LazyCook-WebAssembly</PackageId>
-    <Title>LazyCook Web Assembly</Title>
+    <PackageId>LazyCook-WebAssembly-Server</PackageId>
+    <Title>LazyCook Web Assembly Server</Title>
     <Authors>Yoann MOUGNIBAS</Authors>
-    <PackageDescription>Web Assembly sub-project, from LazyCook project.</PackageDescription>
+    <PackageDescription>Web Assembly Server sub-project, from LazyCook project.</PackageDescription>
     <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/mougnibas/LazyCook</RepositoryUrl>
   </PropertyGroup>
 
-  <!-- Blazor-related properties -->
-  <PropertyGroup>
-    <RazorLangVersion>3.0</RazorLangVersion>
-  </PropertyGroup>
-
   <!-- Private dependency -->
   <ItemGroup>
-    <ProjectReference Include="../recipes/database/LazyCook-Recipe-Database.csproj" />
+    <ProjectReference Include="../../webassembly/client/LazyCook-WebAssembly-Client.csproj" />
   </ItemGroup>
 
   <!-- Public dependency (Blazor-related) -->
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="3.2.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Build" Version="3.2.0" PrivateAssets="all" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="3.2.0" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="3.2.0" />
   </ItemGroup>
 
   <!-- FxCop Analyzer -->
@@ -60,7 +54,7 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <None Remove="stylecop.json" />
-    <AdditionalFiles Include="../../stylecop.json" />
+    <AdditionalFiles Include="../../../stylecop.json" />
   </ItemGroup>
 
 </Project>

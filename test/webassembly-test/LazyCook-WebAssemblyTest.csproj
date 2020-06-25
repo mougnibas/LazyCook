@@ -32,7 +32,7 @@
 
   <!-- Private dependency -->
   <ItemGroup>
-    <ProjectReference Include="../../src/webassembly/LazyCook-WebAssembly.csproj" />
+    <ProjectReference Include="../../src/webassembly/client/LazyCook-WebAssembly-Client.csproj" />
   </ItemGroup>
 
   <!-- FxCop Analyzer -->

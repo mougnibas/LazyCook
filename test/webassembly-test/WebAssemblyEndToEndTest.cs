@@ -62,34 +62,30 @@ namespace Mougnibas.LazyCook.WebAssembly.Test
         [TestInitialize]
         public void Init()
         {
-            // Create a new selenium web driver for an headless firefox instance
+            // Create a new selenium web driver for an headless Chrome/Chromium instance
             ChromeOptions options = new ChromeOptions();
             options.AddArgument("--headless");
             this.driver = new ChromeDriver(options);
 
-            // Find the webassembly directory
-            DirectoryInfo currentDir = new DirectoryInfo(Directory.GetCurrentDirectory());
-            DirectoryInfo rootProjectDir = currentDir.Parent.Parent.Parent.Parent.Parent;
-            DirectoryInfo srcProjectDir = rootProjectDir.GetDirectories("src")[0];
-            string webassemblyProjectDir = null;
-            foreach (DirectoryInfo di in srcProjectDir.GetDirectories())
+            string webassemblyProjectDirStr = null;
+            try
             {
-                if (di.Name.Equals("webassembly", StringComparison.Ordinal))
-                {
-                    webassemblyProjectDir = di.FullName;
-                }
+                // Try to find the webassembly directory
+                DirectoryInfo currentDir = new DirectoryInfo(Directory.GetCurrentDirectory());
+                DirectoryInfo workspaceDir = currentDir.Parent.Parent.Parent.Parent.Parent;
+                DirectoryInfo webassemblyProjectDir = workspaceDir.GetDirectories("src")[0].GetDirectories("webassembly")[0].GetDirectories("client")[0];
+                webassemblyProjectDirStr = webassemblyProjectDir.FullName;
             }
-
-            // If the webassembly project directory is not found, throw an exception
-            if (webassemblyProjectDir == null)
+            catch (Exception ex)
             {
-                throw new Exception(strings.ResourceManager.GetString("webassemblyNotFound", CultureInfo.InvariantCulture));
+                // If the webassembly project directory is not found, throw an exception
+                throw new Exception(strings.ResourceManager.GetString("webassemblyNotFound", CultureInfo.InvariantCulture), ex);
             }
 
             // Start a "dotnet run" process (spawning additional processes)
             this.processDotnetRun = new Process();
             this.processDotnetRun.StartInfo.FileName = "dotnet";
-            this.processDotnetRun.StartInfo.Arguments = "run --project " + webassemblyProjectDir;
+            this.processDotnetRun.StartInfo.Arguments = "run --project " + webassemblyProjectDirStr;
             this.processDotnetRun.StartInfo.UseShellExecute = false;
             this.processDotnetRun.StartInfo.RedirectStandardOutput = true;
             this.processDotnetRun.StartInfo.RedirectStandardError = true;

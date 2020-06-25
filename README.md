@@ -24,8 +24,8 @@ The aim to this project is to make the use of a "KitchenAid© Cook Processor" ea
 
 ## Project links
 
-* Project repository : https://github.com/mougnibas/LazyCook
-* Project DevOps : https://mougnibas.visualstudio.com/LazyCook
+* Public project repository : https://github.com/mougnibas/LazyCook
+* Private project DevOps : https://mougnibas.visualstudio.com/LazyCook
 
 ## Sources convention
 

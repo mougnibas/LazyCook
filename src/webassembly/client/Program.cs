@@ -14,7 +14,7 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with LazyCook.  If not, see <https://www.gnu.org/licenses/>.
-namespace Mougnibas.LazyCook.WebAssembly
+namespace Mougnibas.LazyCook.WebAssembly.Client
 {
     using System;
     using System.Net.Http;
@@ -23,14 +23,14 @@ namespace Mougnibas.LazyCook.WebAssembly
     using Microsoft.Extensions.DependencyInjection;
 
     /// <summary>
-    /// ASP.NET Core entrypoint program.
+    /// ASP.NET Core (developer server) entrypoint program.
     /// </summary>
     public static class Program
     {
         /// <summary>
-        /// ASP.NET Core entry point method.
+        /// ASP.NET Core (developer server) entry point method.
         /// </summary>
-        /// <param name="args">Not used.</param>
+        /// <param name="args">ASP.NET Core and Blazor related options.</param>
         /// <returns>async stuff.</returns>
         public static async Task Main(string[] args)
         {
